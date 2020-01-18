@@ -1,0 +1,9 @@
+C:\Users\24430\source\repos\sudogui\sudogui\bin\Debug\sudogui.exe.config
+C:\Users\24430\source\repos\sudogui\sudogui\bin\Debug\sudogui.exe
+C:\Users\24430\source\repos\sudogui\sudogui\bin\Debug\sudogui.pdb
+C:\Users\24430\source\repos\sudogui\sudogui\obj\Debug\sudogui.csprojAssemblyReference.cache
+C:\Users\24430\source\repos\sudogui\sudogui\obj\Debug\sudogui.Form1.resources
+C:\Users\24430\source\repos\sudogui\sudogui\obj\Debug\sudogui.Properties.Resources.resources
+C:\Users\24430\source\repos\sudogui\sudogui\obj\Debug\sudogui.csproj.GenerateResource.cache
+C:\Users\24430\source\repos\sudogui\sudogui\obj\Debug\sudogui.exe
+C:\Users\24430\source\repos\sudogui\sudogui\obj\Debug\sudogui.pdb
