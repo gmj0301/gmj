@@ -13,13 +13,13 @@ int main(int argc, char* argv[])
 		printf("Please enter the correct command!\n");
 		return 0;
 	}
-	int start = clock(); 
+	int start = clock();
 	int end = 0;
 	if (!strcmp(argv[1], "-s"))
 	{
 		solve(argv[2]);
 		end = clock();
-		printf("姹傝В鎴愬姛锛乗n");
+		printf("求解成功！\n");
 	}
 	else if (!strcmp(argv[1], "-c"))
 	{
@@ -32,9 +32,9 @@ int main(int argc, char* argv[])
 
 		create(n);
 		end = clock();
-		printf("鐢熸垚鎴愬姛锛乗n");
+		printf("生成成功！\n");
 	}
 
-	printf("娑堣�楁椂闂达細%dms\n", end - start);
+	printf("消耗时间：%dms\n", end - start);
 	return 0;
 }

@@ -10,13 +10,13 @@ void write()
 	FILE* fp;
 	if (num_1 == 0)
 	{
-        fp = fopen("solve_sudo.txt", "w");   //当前是第一题的解，需要清空文件里面的所有内容 
-        num_1++;    //表明这不是第一题了
+        fp = fopen("solve_sudo.txt", "w");   //��ǰ�ǵ�һ��Ľ⣬��Ҫ����ļ�������������� 
+        num_1++;    //�����ⲻ�ǵ�һ����
 	}	                               
 	else
 	{
-		fp = fopen("solve_sudo.txt", "a+"); //当前不是第一题的解，需要保存文件里面的所有内容，在其基础上再写入新的解
-		fprintf(fp, "\n\n");           //除了第一题，每一题都要先输出一个空格符，再输出其解，与前面的答案分开
+		fp = fopen("solve_sudo.txt", "a+"); //��ǰ���ǵ�һ��Ľ⣬��Ҫ�����ļ�������������ݣ������������д���µĽ�
+		fprintf(fp, "\n\n");           //���˵�һ�⣬ÿһ�ⶼҪ�����һ���ո�����������⣬��ǰ��Ĵ𰸷ֿ�
 	} 
 	char s[18];
 	int k;
@@ -35,7 +35,7 @@ void write()
 
 bool judge(int h, int l) {
 	for (int i = 0; i < 9; i++)
-		if ((sudo[i][l] == sudo[h][l] && i != h) || (sudo[h][l] == sudo[h][i] && i != l))       //如果同一行存在与当前位置相同的数字，则出错
+		if ((sudo[i][l] == sudo[h][l] && i != h) || (sudo[h][l] == sudo[h][i] && i != l))       //���ͬһ�д����뵱ǰλ����ͬ�����֣������
 		{
 			return false;
 		}
@@ -43,9 +43,9 @@ bool judge(int h, int l) {
 	int y = (l / 3) * 3;
 	for (int i = x; i < x + 3; i++)
 		for (int j = y; j < y + 3; j++)
-			if (sudo[h][l] == sudo[i][j] && i != h && j != l)       //如果同一九宫格存在与当前位置相同的数字，则出错
+			if (sudo[h][l] == sudo[i][j] && i != h && j != l)       //���ͬһ�Ź�������뵱ǰλ����ͬ�����֣������
 				return false;
-	return true;       //没有出现上述错误，则返回true
+	return true;       //û�г������������򷵻�true
 }
 
 void solve_sudo(int i, int j) {
@@ -54,31 +54,31 @@ void solve_sudo(int i, int j) {
 	int k, h, l, temp;
 	for (k = sudo[i][j] + 1; k <= 9; k++) {
 		sudo[i][j] = k;
-		if (judge(i, j)) {    //当前位置可以填入数字i
+		if (judge(i, j)) {    //��ǰλ�ÿ�����������i
 
-			h = i;            //记录下当前位置旁边的下标[h,l]
+			h = i;            //��¼�µ�ǰλ���Աߵ��±�[h,l]
 			l = j + 1;
 			temp = 0;
 			for (; h < 9; h++) {
 				for (; l < 9; l++)
-					if (sudo[h][l] == 0) {   //如果[h,l]处数字为0
-						temp = 1;            //temp=1标记
+					if (sudo[h][l] == 0) {   //���[h,l]������Ϊ0
+						temp = 1;            //temp=1���
 						break;
 					}
 				if (temp == 1) break;
 				else l = 0;
 			}
-			if (temp == 1) solve_sudo(h, l);  //[h,l]处数字为0，调用solve_sudo函数
+			if (temp == 1) solve_sudo(h, l);  //[h,l]������Ϊ0������solve_sudo����
 			else {
-				judge_all = 1;              //所有位置都不为0，说明数独题目解完了
-				return;                     //返回
+				judge_all = 1;              //����λ�ö���Ϊ0��˵��������Ŀ������
+				return;                     //����
 			}
-			if (judge_all == 1) return;     //返回
+			if (judge_all == 1) return;     //����
 		}
 
 	}
-	//1-9这9个数字都填完了，没有符合的数字
-	//说明上一个位置出的数字填错了，当前位置置0，回到上一个位置
+	//1-9��9�����ֶ������ˣ�û�з��ϵ�����
+	//˵����һ��λ�ó�����������ˣ���ǰλ����0���ص���һ��λ��
 	sudo[i][j] = 0;
 	return;
 }
