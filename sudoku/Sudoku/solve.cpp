@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_DEPRECATE
+#pragma warning(disable:4996)
 #include <stdio.h>
 #include <string.h>
 #include "solve_sudo.h"
@@ -10,13 +11,13 @@ void write()
 	FILE* fp;
 	if (num_1 == 0)
 	{
-        fp = fopen("solve_sudo.txt", "w");   //µ±Ç°ÊÇµÚÒ»ÌâµÄ½â£¬ĞèÒªÇå¿ÕÎÄ¼şÀïÃæµÄËùÓĞÄÚÈİ 
-        num_1++;    //±íÃ÷Õâ²»ÊÇµÚÒ»ÌâÁË
+        fp = fopen("solve_sudo.txt", "w");   //å½“å‰æ˜¯ç¬¬ä¸€é¢˜çš„è§£ï¼Œéœ€è¦æ¸…ç©ºæ–‡ä»¶é‡Œé¢çš„æ‰€æœ‰å†…å®¹ 
+        num_1++;    //è¡¨æ˜è¿™ä¸æ˜¯ç¬¬ä¸€é¢˜äº†
 	}	                               
 	else
 	{
-		fp = fopen("solve_sudo.txt", "a+"); //µ±Ç°²»ÊÇµÚÒ»ÌâµÄ½â£¬ĞèÒª±£´æÎÄ¼şÀïÃæµÄËùÓĞÄÚÈİ£¬ÔÚÆä»ù´¡ÉÏÔÙĞ´ÈëĞÂµÄ½â
-		fprintf(fp, "\n\n");           //³ıÁËµÚÒ»Ìâ£¬Ã¿Ò»Ìâ¶¼ÒªÏÈÊä³öÒ»¸ö¿Õ¸ñ·û£¬ÔÙÊä³öÆä½â£¬ÓëÇ°ÃæµÄ´ğ°¸·Ö¿ª
+		fp = fopen("solve_sudo.txt", "a+"); //å½“å‰ä¸æ˜¯ç¬¬ä¸€é¢˜çš„è§£ï¼Œéœ€è¦ä¿å­˜æ–‡ä»¶é‡Œé¢çš„æ‰€æœ‰å†…å®¹ï¼Œåœ¨å…¶åŸºç¡€ä¸Šå†å†™å…¥æ–°çš„è§£
+		fprintf(fp, "\n\n");           //é™¤äº†ç¬¬ä¸€é¢˜ï¼Œæ¯ä¸€é¢˜éƒ½è¦å…ˆè¾“å‡ºä¸€ä¸ªç©ºæ ¼ç¬¦ï¼Œå†è¾“å‡ºå…¶è§£ï¼Œä¸å‰é¢çš„ç­”æ¡ˆåˆ†å¼€
 	} 
 	char s[18];
 	int k;
@@ -35,7 +36,7 @@ void write()
 
 bool judge(int h, int l) {
 	for (int i = 0; i < 9; i++)
-		if ((sudo[i][l] == sudo[h][l] && i != h) || (sudo[h][l] == sudo[h][i] && i != l))       //Èç¹ûÍ¬Ò»ĞĞ´æÔÚÓëµ±Ç°Î»ÖÃÏàÍ¬µÄÊı×Ö£¬Ôò³ö´í
+		if ((sudo[i][l] == sudo[h][l] && i != h) || (sudo[h][l] == sudo[h][i] && i != l))       //å¦‚æœåŒä¸€è¡Œå­˜åœ¨ä¸å½“å‰ä½ç½®ç›¸åŒçš„æ•°å­—ï¼Œåˆ™å‡ºé”™
 		{
 			return false;
 		}
@@ -43,9 +44,9 @@ bool judge(int h, int l) {
 	int y = (l / 3) * 3;
 	for (int i = x; i < x + 3; i++)
 		for (int j = y; j < y + 3; j++)
-			if (sudo[h][l] == sudo[i][j] && i != h && j != l)       //Èç¹ûÍ¬Ò»¾Å¹¬¸ñ´æÔÚÓëµ±Ç°Î»ÖÃÏàÍ¬µÄÊı×Ö£¬Ôò³ö´í
+			if (sudo[h][l] == sudo[i][j] && i != h && j != l)       //å¦‚æœåŒä¸€ä¹å®«æ ¼å­˜åœ¨ä¸å½“å‰ä½ç½®ç›¸åŒçš„æ•°å­—ï¼Œåˆ™å‡ºé”™
 				return false;
-	return true;       //Ã»ÓĞ³öÏÖÉÏÊö´íÎó£¬Ôò·µ»Øtrue
+	return true;       //æ²¡æœ‰å‡ºç°ä¸Šè¿°é”™è¯¯ï¼Œåˆ™è¿”å›true
 }
 
 void solve_sudo(int i, int j) {
@@ -54,31 +55,31 @@ void solve_sudo(int i, int j) {
 	int k, h, l, temp;
 	for (k = sudo[i][j] + 1; k <= 9; k++) {
 		sudo[i][j] = k;
-		if (judge(i, j)) {    //µ±Ç°Î»ÖÃ¿ÉÒÔÌîÈëÊı×Öi
+		if (judge(i, j)) {    //å½“å‰ä½ç½®å¯ä»¥å¡«å…¥æ•°å­—i
 
-			h = i;            //¼ÇÂ¼ÏÂµ±Ç°Î»ÖÃÅÔ±ßµÄÏÂ±ê[h,l]
+			h = i;            //è®°å½•ä¸‹å½“å‰ä½ç½®æ—è¾¹çš„ä¸‹æ ‡[h,l]
 			l = j + 1;
 			temp = 0;
 			for (; h < 9; h++) {
 				for (; l < 9; l++)
-					if (sudo[h][l] == 0) {   //Èç¹û[h,l]´¦Êı×ÖÎª0
-						temp = 1;            //temp=1±ê¼Ç
+					if (sudo[h][l] == 0) {   //å¦‚æœ[h,l]å¤„æ•°å­—ä¸º0
+						temp = 1;            //temp=1æ ‡è®°
 						break;
 					}
 				if (temp == 1) break;
 				else l = 0;
 			}
-			if (temp == 1) solve_sudo(h, l);  //[h,l]´¦Êı×ÖÎª0£¬µ÷ÓÃsolve_sudoº¯Êı
+			if (temp == 1) solve_sudo(h, l);  //[h,l]å¤„æ•°å­—ä¸º0ï¼Œè°ƒç”¨solve_sudoå‡½æ•°
 			else {
-				judge_all = 1;              //ËùÓĞÎ»ÖÃ¶¼²»Îª0£¬ËµÃ÷Êı¶ÀÌâÄ¿½âÍêÁË
-				return;                     //·µ»Ø
+				judge_all = 1;              //æ‰€æœ‰ä½ç½®éƒ½ä¸ä¸º0ï¼Œè¯´æ˜æ•°ç‹¬é¢˜ç›®è§£å®Œäº†
+				return;                     //è¿”å›
 			}
-			if (judge_all == 1) return;     //·µ»Ø
+			if (judge_all == 1) return;     //è¿”å›
 		}
 
 	}
-	//1-9Õâ9¸öÊı×Ö¶¼ÌîÍêÁË£¬Ã»ÓĞ·ûºÏµÄÊı×Ö
-	//ËµÃ÷ÉÏÒ»¸öÎ»ÖÃ³öµÄÊı×ÖÌî´íÁË£¬µ±Ç°Î»ÖÃÖÃ0£¬»Øµ½ÉÏÒ»¸öÎ»ÖÃ
+	//1-9è¿™9ä¸ªæ•°å­—éƒ½å¡«å®Œäº†ï¼Œæ²¡æœ‰ç¬¦åˆçš„æ•°å­—
+	//è¯´æ˜ä¸Šä¸€ä¸ªä½ç½®å‡ºçš„æ•°å­—å¡«é”™äº†ï¼Œå½“å‰ä½ç½®ç½®0ï¼Œå›åˆ°ä¸Šä¸€ä¸ªä½ç½®
 	sudo[i][j] = 0;
 	return;
 }
@@ -93,10 +94,10 @@ void solve(const char* txt)
 	{
 		char p[25];
 
-		if (num_1 != 0) fgets(p, 2, fp);
-		int num = 0, w, s;
-		for (int i = 0; i < 9; i++) {
+		int num = 0, w, s, i;
+		for (i = 0; i < 9; i++) {
 			fgets(p, 25, fp);
+			if (p[0] < '0' || p[0] > '9') break;
 			int k = 0;
 			for (int j = 0; j < 20; j++) {
 				if (p[j] <= '9' && p[j] >= '0') {
@@ -110,7 +111,7 @@ void solve(const char* txt)
 				}
 			}
 		}
-
+		if (i < 9) continue;
 		solve_sudo(w, s);
 		write();
 		judge_all = 0;
