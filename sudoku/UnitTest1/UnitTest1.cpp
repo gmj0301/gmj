@@ -127,17 +127,16 @@ namespace UnitTest1
 			init(sudo, p);
 			produce(sudo);
 			for (int i = 0; i < 9; i++)
-				sudo[1][i] = 0;
-			solve_sudo(1, 0);
-			Assert::AreEqual(sudo[1][0], 4);
-			Assert::AreEqual(sudo[1][1], 5);
-			Assert::AreEqual(sudo[1][2], 6);
-			Assert::AreEqual(sudo[1][3], 7);
-			Assert::AreEqual(sudo[1][4], 8);
-			Assert::AreEqual(sudo[1][5], 9);
-			Assert::AreEqual(sudo[1][6], 1);
-			Assert::AreEqual(sudo[1][7], 2);
-			Assert::AreEqual(sudo[1][8], 3);
+				sudo[0][i] = 0;
+			for (int i = 0; i < 9; i++)
+				for (int j = 0; j < 9; j++)
+					if (sudo[i][j] == 0)
+						numl[j]++;
+			solve_sudo(0, 0);
+			Assert::AreEqual(sudo[0][0] == 1, true);
+			Assert::AreEqual(sudo[0][1], 2);
+			Assert::AreEqual(sudo[0][2], 3);
+			Assert::AreEqual(sudo[0][3], 4);
 		}
 
 	};
