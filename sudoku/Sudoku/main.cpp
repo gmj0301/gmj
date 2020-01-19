@@ -19,10 +19,16 @@ int main(int argc, char* argv[])
 	{
 		solve(argv[2]);
 		end = clock();
-		printf("求解成功！\n");
+		printf("姹傝В鎴愬姛锛乗n");
 	}
 	else if (!strcmp(argv[1], "-c"))
 	{
+		for(int i = 0; argv[2][i] != '\0'; i++)
+			if ((argv[2][i] >= 'a' && argv[2][i] <= 'z') || (argv[2][i] >= 'A' && argv[2][i] <= 'Z')) 
+			{
+				printf("wrong enter!\n");
+				return 0;
+			}
 		int n = atoi(argv[2]);
 		if (n <= 0 || n > 1000000)
 		{
@@ -32,9 +38,9 @@ int main(int argc, char* argv[])
 
 		create(n);
 		end = clock();
-		printf("生成成功！\n");
+		printf("鐢熸垚鎴愬姛锛乗n");
 	}
 
-	printf("消耗时间：%dms\n", end - start);
+	printf("娑堣�楁椂闂达細%dms\n", end - start);
 	return 0;
 }
